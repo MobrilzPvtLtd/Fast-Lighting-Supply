@@ -14,7 +14,7 @@
 node_modules/
 
 #Assets
-public/build/
+#public/build/
 public/pwa/
 modules/*/Resources/assets/public/fonts/*
 

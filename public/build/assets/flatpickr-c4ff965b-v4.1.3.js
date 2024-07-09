@@ -1,0 +1,1 @@
+import"./flatpickr-d03fdfa2-v4.1.3.js";import"./blueimp-md5-133dffcb-v4.1.3.js";for(let t of $(".datetime-picker"))$(t).flatpickr({mode:t.hasAttribute("data-range")?"range":"single",enableTime:t.hasAttribute("data-time"),noCalendar:t.hasAttribute("data-no-calender"),altInput:!0});
