@@ -30,3 +30,4 @@ public/hot
 public/sitemaps/*
 public/sitemap.xml
 .php-cs-fixer.cache
+.htaccess
