@@ -1,11 +1,11 @@
 <div class="category-nav {{ request()->routeIs('home') ? 'show' : 'category-dropdown-menu' }}">
-    <div class="category-nav-inner">
+    <div class="category-nav-inner" >
         {{ trans('storefront::layout.all_categories_header') }}
-        <i class="las la-bars"></i>
+        <i class="las la-bars" id="show-side-menu" onclick="alertFunc()" ></i>
     </div>
 
     @if ($categoryMenu->menus()->isNotEmpty())
-        <div class="category-dropdown-wrap">
+        <div class="category-dropdown-wrap" id="hide-side-menu">
             <div class="category-dropdown">
                 <ul class="list-inline mega-menu vertical-megamenu">
                     @foreach ($categoryMenu->menus() as $menu)
@@ -26,3 +26,24 @@
         </div>
     @endif
 </div>
+
+@section('script')
+    <script>
+        const show01 = document.getElementById("show-side-menu")
+const hide01 = document.getElementById("hide-side-menu")
+
+
+
+const alertFunc = () => {
+    const hide01 = document.getElementById('hide-side-menu');
+    
+    if (hide01.style.display === "none") {
+        hide01.style.display = "block";
+    } else {
+        hide01.style.display = "none";
+    }
+};
+
+    </script>
+@endsection
+

@@ -21,10 +21,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ v(asset('build/assets/style.css')) }}"> 
     <script src="{{ v(asset('build/assets/jquery.min.js')) }}"></script>
     <script src="{{ v(asset('build/assets/bootstrap.min.js')) }}"></script>
     <script src="{{ v(asset('build/assets/slick.min.js')) }}"></script>
+    <script src="{{ v(asset('build/assets/animation.js')) }}"></script>
 
     @vite([
         'modules/Storefront/Resources/assets/public/sass/main.scss',
@@ -120,8 +121,10 @@
 
     @stack('pre-scripts')
     @stack('scripts')
+    @yield('script')
 
     {!! setting('custom_footer_assets') !!}
+
 </body>
 
 </html>
