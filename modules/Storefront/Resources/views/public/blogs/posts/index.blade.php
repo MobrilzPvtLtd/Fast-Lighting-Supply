@@ -74,6 +74,7 @@
             </div>
         </div>
     </section>
+
 @endsection
 
 @push('globals')

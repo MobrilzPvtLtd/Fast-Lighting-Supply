@@ -19219,8 +19219,8 @@ iframe.wait-autoplay {
 }
 .single-feature .feature-icon > i {
     font-size: 36px;
-    color: #0068e1;
-    color: var(--color-primary);
+    /* color: #0068e1; */
+    color: #000000;
 }
 .single-feature .feature-details > span,
 .single-feature .feature-details > h6 {
@@ -22011,6 +22011,7 @@ textarea.form-control {
 }
 .top-nav-wrap {
     border-bottom: 1px solid #e1e1e1;
+    background-color: #000;
 }
 .top-nav {
     padding: 8px 15px;
@@ -22057,7 +22058,10 @@ textarea.form-control {
 .top-nav .top-nav-right-list > li > a {
     display: flex;
     align-items: center;
-    color: #191919;
+    color: #fff;
+}
+.top-nav-left.d-none.d-lg-block span {
+    color: #fff;
 }
 .top-nav .top-nav-right-list > li > a:hover {
     color: #0068e1;
@@ -29918,4 +29922,92 @@ textarea.form-control {
 }
 .home-slider-wrap {
     width: 100%;
+}
+.choose-fls-sec001 {
+    background-color: #171827;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 35px;
+    border-radius: 25px 0px 0px 25px;
+}
+.choose-fls-sec001 h4 {
+    color: #fff;
+}
+.choose-fls-sec001 img {
+    width: 5vw;
+}
+.choose-fls-sec001 p {
+    color: #fff;
+}
+.choose-fls-sec002{
+    background-color: #0CC0DF;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 35px;
+}
+.choose-fls-sec002 h4 {
+    color: #fff;
+}
+.choose-fls-sec002 img {
+    width: 5vw;
+}
+.choose-fls-sec002 p {
+    color: #fff;
+}
+.choose-fls-sec003{
+    background-color: #171827;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 35px;
+    border-radius: 0px 25px 25px 0px;
+}
+.choose-fls-sec003 h4 {
+    color: #fff;
+}
+.choose-fls-sec003 img {
+    width: 5vw;
+}
+.choose-fls-sec003 p {
+    color: #fff;
+}
+
+section.choose_fls .container h2 {
+        text-align: center;
+        font-size: 36px;
+        line-height: 54px;
+        font-weight: 700;
+        padding: 25px;
+}
+
+section.choose_fls .container h6 {
+    text-align: center;
+    color: #939393;
+    padding-bottom: 25px;
+    line-height: 44px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.contact001 ul li a {
+    /* display: none !important; */
+    color: #000;
+    line-height: 35px;
+}
+.contact001 h4 {
+    margin-bottom: 23px;
+}
+.contact001 ul li a:hover {
+    /* display: none !important; */
+    color: #007bff;
+}
+.contact001 ul li::marker {
+    color: #fff;
+}
+.footer-links ul li::marker{
+    color: #fff;
 }

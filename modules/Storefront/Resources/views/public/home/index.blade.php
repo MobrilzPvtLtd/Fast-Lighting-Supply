@@ -57,4 +57,31 @@
     @if (setting('storefront_blogs_section_enabled'))
         <blog-posts :data="{{ json_encode($blogPosts) }}"></blog-posts>
     @endif
+
+    {{-- <blog-posts :data="{{ json_encode($blogPosts) }}"></blog-posts> --}}
+    <section class="choose_fls">
+        <div class="container">
+            <h2>Why Choose Fast Lighting Supply?</h2>
+            <h6>Loreum dummit iosum loreum dummt iosum loren dummt iosum
+            </h6>
+            <div class="d-flex">
+                <div class="choose-fls-sec001">
+                    <img src="build/assets/images/1 1.png" alt="">
+                    <h4>Fast & Easy Process</h4>
+                    <p>Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem  Dummt iosum Lorem Dummt iosum Lorem Dummt iosum</p>
+                </div>
+                <div class="choose-fls-sec002">
+                    <img src="build/assets/images/2 25.png" alt="">
+                    <h4>Save Your Money</h4>
+                    <p>Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem  Dummt iosum Lorem Dummt iosum Lorem Dummt iosum</p>
+                </div>
+                <div class="choose-fls-sec003">
+                    <img src="build/assets/images/1 3.png" alt="">
+                    <h4>Control Your Policy</h4>
+                    <p>Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem  Dummt iosum Lorem Dummt iosum Lorem Dummt iosum</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
 @endsection

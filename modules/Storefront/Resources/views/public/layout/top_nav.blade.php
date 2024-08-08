@@ -1,18 +1,18 @@
 <section class="top-nav-wrap">
     <div class="container">
         <div class="top-nav">
-            <div class="row justify-content-between">
+            <div class="row justify-content-center ">
                 <div class="top-nav-left d-none d-lg-block">
-                    <span>{{ setting('storefront_welcome_text') }}</span>
+                    {{-- <span>{{ setting('storefront_welcome_text') }}</span> --}}
                 </div>
 
                 <div class="top-nav-right">
-                    <ul class="list-inline top-nav-right-list"> 
+                    <ul class="list-inline top-nav-right-list">
                         <li>
-                            <a href="{{ route('contact.create') }}">
-                                <i class="las la-envelope"></i>
-
-                                {{ trans('storefront::layout.contact') }}
+                            <a href="/">
+                                {{-- <i class="las la-envelope"></i> --}}
+                                Free Standard Shipping on All Orders 
+                                {{-- {{ trans('storefront::layout.contact') }} --}}
                             </a>
                         </li>
 
@@ -48,16 +48,16 @@
 
                         @auth
                             <li class="top-nav-account">
-                                <a href="{{ route('account.dashboard.index') }}">
-                                    <i class="las la-user"></i>
-                                    {{ trans('storefront::layout.account') }}
+                                <a href="{{ route('account.dashboard.index') }}">Free Fast Shipping on Orders $100+
+                                    {{-- <i class="las la-user"></i>
+                                    {{ trans('storefront::layout.account') }} --}}
                                 </a>
                             </li>
                         @else
                             <li>
-                                <a href="{{ route('login') }}">
-                                    <i class="las la-sign-in-alt"></i>
-                                    {{ trans('storefront::layout.login') }}
+                                <a href="{{ route('login') }}">Free Fast Shipping on Orders $100+
+                                    {{-- <i class="las la-sign-in-alt"></i>
+                                    {{ trans('storefront::layout.login') }} --}}
                                 </a>
                             </li>
                         @endauth
