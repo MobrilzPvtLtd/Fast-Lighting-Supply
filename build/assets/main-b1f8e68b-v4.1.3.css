@@ -30011,3 +30011,6 @@ section.choose_fls .container h6 {
 .footer-links ul li::marker{
     color: #fff;
 }
+i#show-side-menu {
+    cursor: pointer;
+}
