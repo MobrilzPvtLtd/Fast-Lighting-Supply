@@ -15,7 +15,7 @@
                                         {{ trans('storefront::account.pages.dashboard') }}
                                     </a>
                                 </li>
-
+ 
                                 <li>
                                     <a href="{{ route('account.orders.index') }}">
                                         {{ trans('storefront::account.pages.my_orders') }}
