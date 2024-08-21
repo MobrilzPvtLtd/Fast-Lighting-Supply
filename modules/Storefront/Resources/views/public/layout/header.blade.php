@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('compare.index') }}" class="header-column-right-item header-compare">
+                    {{-- <a href="{{ route('compare.index') }}" class="header-column-right-item header-compare">
                         <div class="icon-wrap">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M3.58008 5.15991H17.4201C19.0801 5.15991 20.4201 6.49991 20.4201 8.15991V11.4799" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -54,7 +54,7 @@
 
                             <div class="count" v-text="compareCount"></div>
                         </div>
-                    </a>
+                    </a> --}}
 
                     <a href="{{ route('account.wishlist.index') }}" class="header-column-right-item header-wishlist">
                         <div class="icon-wrap">
@@ -78,10 +78,8 @@
 
                         {{-- <span v-html="cart.subTotal.inCurrentCurrency.formatted"></span> --}}
                     </div>
-                    <a href="{{ route('account.wishlist.index') }}" class="header-column-right-item header-wishlist">
-                        <div class="icon-wrap">
-                            Login
-                        </div>
+                    <a href="{{ route('login') }}" class="header-column-right-item" style="color: #000">
+                        Login
                     </a>
 
                 </div>
