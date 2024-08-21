@@ -50,8 +50,8 @@
                                 <path d="M6.74008 2L3.58008 5.15997L6.74008 8.32001" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M20.4201 18.84H6.58008C4.92008 18.84 3.58008 17.5 3.58008 15.84V12.52" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M17.26 21.9999L20.42 18.84L17.26 15.6799" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>                      
-                            
+                            </svg>
+
                             <div class="count" v-text="compareCount"></div>
                         </div>
                     </a>
@@ -60,8 +60,8 @@
                         <div class="icon-wrap">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.68998C2 5.59998 4.49 3.09998 7.56 3.09998C9.38 3.09998 10.99 3.97998 12 5.33998C13.01 3.97998 14.63 3.09998 16.44 3.09998C19.51 3.09998 22 5.59998 22 8.68998C22 15.69 15.52 19.82 12.62 20.81Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>                      
-                            
+                            </svg>
+
                             <div class="count" v-text="wishlistCount"></div>
                         </div>
                     </a>
@@ -76,8 +76,14 @@
                             <div class="count" v-text="cart.quantity">{{ $cart->toArray()['quantity'] }}</div>
                         </div>
 
-                        <span v-html="cart.subTotal.inCurrentCurrency.formatted"></span>
+                        {{-- <span v-html="cart.subTotal.inCurrentCurrency.formatted"></span> --}}
                     </div>
+                    <a href="{{ route('account.wishlist.index') }}" class="header-column-right-item header-wishlist">
+                        <div class="icon-wrap">
+                            Login
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </div>

@@ -13,13 +13,24 @@
                 >
                     @foreach ($slider->slides as $slide)
                         <div class="slide">
+
                             @if ($slider->fade)
-                                <img src="{{ $slide->file->path }}" class="slider-image">
+                                <a href="{{ $slide->call_to_action_url }}"
+                                    data-animation-in="{{ data_get($slide->options, 'call_to_action.effect', 'fadeInRight') }}"
+                                    data-delay-in="{{ data_get($slide->options, 'call_to_action.delay', '0.7') }}"
+                                    target="{{ $slide->open_in_new_window ? '_blank' : '_self' }}">
+                                    <img src="{{ $slide->file->path }}" class="slider-image">
+                                </a>
                             @else
-                                <img src="{{ $slide->file->path }}" data-animation-in="zoomInImage" class="slider-image animate_animated">
+                                <a href="{{ $slide->call_to_action_url }}"
+                                    data-animation-in="{{ data_get($slide->options, 'call_to_action.effect', 'fadeInRight') }}"
+                                    data-delay-in="{{ data_get($slide->options, 'call_to_action.delay', '0.7') }}"
+                                    target="{{ $slide->open_in_new_window ? '_blank' : '_self' }}">
+                                    <img src="{{ $slide->file->path }}" data-animation-in="zoomInImage" class="slider-image animate_animated">
+                                </a>
                             @endif
 
-                            <div class="slide-content {{ $slide->isAlignedLeft() ? 'align-left' : 'align-right' }}">
+                            {{-- <div class="slide-content {{ $slide->isAlignedLeft() ? 'align-left' : 'align-right' }}">
                                 <div class="captions">
                                     <span
                                         class="caption caption-1"
@@ -49,7 +60,7 @@
                                         </a>
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     @endforeach
                 </div>
