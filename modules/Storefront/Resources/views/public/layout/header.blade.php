@@ -78,11 +78,17 @@
 
                         {{-- <span v-html="cart.subTotal.inCurrentCurrency.formatted"></span> --}}
                     </div>
-                    @if(auth()->user())
-                        <a href="{{ route('account.dashboard.index') }}" class="header-column-right-item" style="color: #000"> {{ auth()->user()->full_name . ' ' . auth()->user()->last_name }} </a>
+
+                    @if(auth()->check())
+                        <a href="{{ route('account.dashboard.index') }}" class="header-column-right-item" style="color: #000">
+                            {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}
+                        </a>
                     @else
-                        <a href="{{ route('login') }}" class="header-column-right-item" style="color: #000"> Login </a>
+                        <a href="{{ route('login') }}" class="header-column-right-item" style="color: #000">
+                            Login
+                        </a>
                     @endif
+
                 </div>
             </div>
         </div>
