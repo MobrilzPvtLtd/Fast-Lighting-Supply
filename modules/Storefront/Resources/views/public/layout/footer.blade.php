@@ -15,7 +15,7 @@
                                         {{ trans('storefront::account.pages.dashboard') }}
                                     </a>
                                 </li>
- 
+
                                 <li>
                                     <a href="{{ route('account.orders.index') }}">
                                         {{ trans('storefront::account.pages.my_orders') }}
@@ -125,7 +125,7 @@
                                 <a href="#" >Instagram
                                 </a>
                             </li>
-                            <p>At Gladiator Lighting, we pride ourselves on our extensive selection of products, which includes everything from LED bulbs and fixtures to traditional incandescent lighting.</p>
+                            <p>At Fast Lighting Supply, we pride ourselves on our extensive selection of products, which includes everything from LED bulbs and fixtures to traditional incandescent lighting.</p>
                         </ul>
                     </div>
 
