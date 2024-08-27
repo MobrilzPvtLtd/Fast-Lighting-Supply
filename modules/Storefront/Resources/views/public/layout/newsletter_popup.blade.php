@@ -25,13 +25,13 @@
 
                                         <span class="error-message" v-if="error" v-text="error"></span>
 
-                                        <button class="btn btn-primary btn-subscribe" v-if="subscribed">
+                                        <button class="btn btn-subscribe" v-if="subscribed">
                                             <i class="las la-check"></i>
                                             {{ trans('storefront::layout.subscribed') }}
                                         </button>
 
                                         <button
-                                            class="btn btn-primary btn-subscribe"
+                                            class="btn btn-subscribe"
                                             :class="{ 'btn-loading': subscribing }"
                                             v-else
                                         >

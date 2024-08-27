@@ -400,6 +400,7 @@
     font-size: 10px;
     line-height: 16px;
 }
+
 @media screen and (max-width: 1700px) {
     .all-blog-posts-wrap .blog-posts > .blog-post-card {
         flex: 0 0 33.3333333333%;

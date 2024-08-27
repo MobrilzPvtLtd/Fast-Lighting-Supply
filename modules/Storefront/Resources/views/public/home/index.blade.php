@@ -64,7 +64,7 @@
             <h2>Why Choose Fast Lighting Supply?</h2>
             <h6>Loreum dummit iosum loreum dummt iosum loren dummt iosum
             </h6>
-            <div class="d-flex">
+            <div class="d-flex choose_fls001">
                 <div class="choose-fls-sec001">
                     <img src="build/assets/images/1 1.png" alt="">
                     <h4>Fast & Easy Process</h4>

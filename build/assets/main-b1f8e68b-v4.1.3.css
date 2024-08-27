@@ -30014,3 +30014,21 @@ section.choose_fls .container h6 {
 i#show-side-menu {
     cursor: pointer;
 }
+
+
+@media screen and (max-width:768px){
+    .choose_fls001{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .choose-fls-sec001, .choose-fls-sec002, .choose-fls-sec003 {
+        border-radius: 25px;
+        padding: 35px;
+    }
+    .choose-fls-sec001 img,.choose-fls-sec003 img, .choose-fls-sec002 img {
+        width: 20vw;
+    }
+}
+.newsletter-form button.btn.btn-subscribe {
+    background-color: #ffd700 !important;
+}
