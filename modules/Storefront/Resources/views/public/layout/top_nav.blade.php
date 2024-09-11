@@ -53,12 +53,12 @@
                                         {{ trans('storefront::layout.account') }} --}}
                                     </a>
                                 </li>
-                                {{-- <li class="">
+                                <li class="">
                                     <a href="{{ route('account.dashboard.index') }}">
                                         <i class="las la-user"></i>
                                         {{ trans('storefront::layout.account') }}
                                     </a>
-                                </li> --}}
+                                </li>
                             @else
                                 <li>
                                     <a>Free Fast Shipping on Orders $100+
