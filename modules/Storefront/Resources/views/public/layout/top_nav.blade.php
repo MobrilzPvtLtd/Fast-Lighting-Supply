@@ -9,7 +9,7 @@
                 <div class="top-nav-right">
                     <ul class="list-inline top-nav-right-list">
                         <li>
-                            <a href="/">
+                            <a>
                                 {{-- <i class="las la-envelope"></i> --}}
                                 Free Standard Shipping on All Orders
                                 {{-- {{ trans('storefront::layout.contact') }} --}}
@@ -47,21 +47,21 @@
 
                         @auth
 
-                                <li class="">
-                                    <a href="#">Free Fast Shipping on Orders $100+
+                                <li>
+                                    <a>Free Fast Shipping on Orders $100+
                                         {{-- <i class="las la-user"></i>
                                         {{ trans('storefront::layout.account') }} --}}
                                     </a>
                                 </li>
-                                <li class="">
+                                {{-- <li class="">
                                     <a href="{{ route('account.dashboard.index') }}">
                                         <i class="las la-user"></i>
                                         {{ trans('storefront::layout.account') }}
                                     </a>
-                                </li>
+                                </li> --}}
                             @else
                                 <li>
-                                    <a href="#">Free Fast Shipping on Orders $100+
+                                    <a>Free Fast Shipping on Orders $100+
                                         {{-- <i class="las la-sign-in-alt"></i>
                                         {{ trans('storefront::layout.login') }} --}}
                                     </a>

@@ -59,8 +59,8 @@
                     <a href="{{ route('account.wishlist.index') }}" class="header-column-right-item header-wishlist">
                         <div class="icon-wrap">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.68998C2 5.59998 4.49 3.09998 7.56 3.09998C9.38 3.09998 10.99 3.97998 12 5.33998C13.01 3.97998 14.63 3.09998 16.44 3.09998C19.51 3.09998 22 5.59998 22 8.68998C22 15.69 15.52 19.82 12.62 20.81Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                                <path d="M12 17.3l-4.618 2.43 1.217-5.28-4.107-3.79 5.375-.462L12 5.25l2.133 4.948 5.375.462-4.107 3.79 1.217 5.28L12 17.3z" stroke="#292D32" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
 
                             <div class="count" v-text="wishlistCount"></div>
                         </div>
@@ -69,9 +69,10 @@
                     <div class="header-column-right-item header-cart">
                         <div class="icon-wrap">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M7.5 7.67001V6.70001C7.5 4.45001 9.31 2.24001 11.56 2.03001C14.24 1.77001 16.5 3.88001 16.5 6.51001V7.89001" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9.00001 22H15C19.02 22 19.74 20.39 19.95 18.43L20.7 12.43C20.97 9.99 20.27 8 16 8H8.00001C3.73001 8 3.03001 9.99 3.30001 12.43L4.05001 18.43C4.26001 20.39 4.98001 22 9.00001 22Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                                <path d="M6.5 6H4M4 6H2M4 6L5.27 15.34C5.38 16.12 6.08 16.7 6.87 16.7H17.13C17.92 16.7 18.62 16.12 18.73 15.34L20 6H4ZM16 6V4.5C16 3.12 14.88 2 13.5 2H10.5C9.12 2 8 3.12 8 4.5V6" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="9" cy="20" r="1" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="15" cy="20" r="1" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
 
                             <div class="count" v-text="cart.quantity">{{ $cart->toArray()['quantity'] }}</div>
                         </div>
