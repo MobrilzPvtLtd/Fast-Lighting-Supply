@@ -8,7 +8,11 @@
                 {{ setting('storefront_navbar_text') }}
             </span>
         </div>
-        <div><h5 style="word-spacing: 5px; letter-spacing: 1px; text-align: center; margin-top: 5px;">Same-Day Order Fulfillment &nbsp;   |  &nbsp; Free Standard Shipping &nbsp;  |  &nbsp Free Fast Shipping on Orders $100+  &nbsp; | &nbsp;  30-Days Money Back Guarantee  &nbsp; |  &nbsp; Fast & Easy Returns</h5></div>
+        <div class="top-text">
+            <h5 style="word-spacing: 5px; letter-spacing: 1px; text-align: center; margin-top: 5px;">Same-Day Order
+                Fulfillment &nbsp; | &nbsp; Free Standard Shipping &nbsp; | &nbsp Free Fast Shipping on Orders $100+
+                &nbsp; | &nbsp; 30-Days Money Back Guarantee &nbsp; | &nbsp; Fast & Easy Returns</h5>
+        </div>
     </div>
 </section>
 
