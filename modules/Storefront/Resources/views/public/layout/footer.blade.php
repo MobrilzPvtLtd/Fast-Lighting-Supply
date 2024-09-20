@@ -90,24 +90,24 @@
                     <div class="col-lg-3 col-md-5 contact001">
                         <h4>Contact Us</h4>
                         <ul>
-                            <li>
+                            {{-- <li>
                                 <i class="las la-map-marker"></i>
                                 <a href="#" >Spring Hill, TN
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <i class="las la-envelope"></i>
-                                <a href="#" >sales@gladiatorlighting.com
+                                <a href="#" >sales@fastlightingsupply.com
                                 </a>
                             </li>
                             <li>
                                 <i class="las la-phone"></i>
-                                <a href="#" >800-581-8705
+                                <a href="#" >888-372-1332
                                 </a>
                             </li>
                             <li>
                                 <i class="las la-history"></i>
-                                <a href="#" >Mon-Fri: 9am-3pm CST
+                                <a href="#" >Mon-Fri: 8:00 a.m.-5:00 p.m. CST
                                 </a>
                             </li>
                         </ul>
@@ -125,7 +125,10 @@
                                 <a href="#" >Instagram
                                 </a>
                             </li>
-                            <p>At Fast Lighting Supply, we pride ourselves on our extensive selection of products, which includes everything from LED bulbs and fixtures to traditional incandescent lighting.</p>
+                            <p>At
+                                Fast Lighting Supply, we take pride in offering an extensive range of lighting
+                                solutions, from energy-efficient LED bulbs and fixtures to classic incandescent
+                                options, ensuring we have the right product for every project.</p>
                         </ul>
                     </div>
 

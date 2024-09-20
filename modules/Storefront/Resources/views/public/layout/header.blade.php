@@ -68,10 +68,11 @@
 
                     <div class="header-column-right-item header-cart">
                         <div class="icon-wrap">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M6.5 6H4M4 6H2M4 6L5.27 15.34C5.38 16.12 6.08 16.7 6.87 16.7H17.13C17.92 16.7 18.62 16.12 18.73 15.34L20 6H4ZM16 6V4.5C16 3.12 14.88 2 13.5 2H10.5C9.12 2 8 3.12 8 4.5V6" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="9" cy="20" r="1" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="15" cy="20" r="1" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+                                <path d="M6 6H20L17 14H8L6 6Z" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="9" cy="18" r="2" fill="none" stroke="black" stroke-width="2"/>
+                                <circle cx="17" cy="18" r="2" fill="none" stroke="black" stroke-width="2"/>
+                                <line x1="4" y1="6" x2="6" y2="6" stroke="black" stroke-width="2" stroke-linecap="round"/>
                               </svg>
 
                             <div class="count" v-text="cart.quantity">{{ $cart->toArray()['quantity'] }}</div>

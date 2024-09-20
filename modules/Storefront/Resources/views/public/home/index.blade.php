@@ -67,18 +67,23 @@
             <div class="d-flex choose_fls001">
                 <div class="choose-fls-sec001">
                     <img src="build/assets/images/1 1.png" alt="">
-                    <h4>Fast & Easy Process</h4>
-                    <p>Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem  Dummt iosum Lorem Dummt iosum Lorem Dummt iosum</p>
+                    <h4>Quick Checkout</h4>
+                    <p>At Fast Lighting Supply, we’ve streamlined the checkout process to ensure it’s fast and
+                        hassle-free. With our easy-to-navigate interface and secure payment options, you can complete
+                        your purchase in just a few clicks, saving you time and effort.</p>
                 </div>
                 <div class="choose-fls-sec002">
                     <img src="build/assets/images/2 25.png" alt="">
-                    <h4>Save Your Money</h4>
-                    <p>Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem  Dummt iosum Lorem Dummt iosum Lorem Dummt iosum</p>
+                    <h4>Fast Delivery</h4>
+                    <p>We understand that time is critical when it comes to lighting projects. That’s why we prioritize
+                        speed in our deliveries, working with reliable carriers to get your order to you as quickly as
+                        possible, so you can stay on track.</p>
                 </div>
                 <div class="choose-fls-sec003">
                     <img src="build/assets/images/1 3.png" alt="">
-                    <h4>Control Your Policy</h4>
-                    <p>Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem Dummt iosum Lorem  Dummt iosum Lorem Dummt iosum Lorem Dummt iosum</p>
+                    <h4>Easy Returns</h4>
+                    <p>We believe in providing flexibility with every purchase. Our hassle-free returns policy allows you
+                        to return eligible items with ease, giving you peace of mind and full control over your orders.</p>
                 </div>
             </div>
         </div>

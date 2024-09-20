@@ -53,12 +53,12 @@
                                         {{ trans('storefront::layout.account') }} --}}
                                     </a>
                                 </li>
-                                <li class="">
+                                {{-- <li class="">
                                     <a href="{{ route('account.dashboard.index') }}">
                                         <i class="las la-user"></i>
                                         {{ trans('storefront::layout.account') }}
                                     </a>
-                                </li>
+                                </li> --}}
                             @else
                                 <li>
                                     <a>Free Fast Shipping on Orders $100+
@@ -66,12 +66,12 @@
                                         {{ trans('storefront::layout.login') }} --}}
                                     </a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="{{ route('login') }}">
                                         <i class="las la-sign-in-alt"></i>
                                         {{ trans('storefront::layout.login') }}
                                     </a>
-                                </li>
+                                </li> --}}
 
 
 
