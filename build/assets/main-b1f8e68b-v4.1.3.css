@@ -30034,17 +30034,17 @@ i#show-side-menu {
 }
 @media screen and (min-width:1601px) and (max-width:1900px) {
     .top-text h5 {
-        font-size: 17px;
+        font-size: 16px;
     }
 }
 @media screen and (min-width:1301px) and (max-width:1600px) {
     .top-text h5 {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 @media screen and (min-width:1101px) and (max-width:1300px) {
     .top-text h5 {
-        font-size: 12px;
+        font-size: 11px;
     }
 }
 @media screen and (min-width:960px) and (max-width:1100px) {
