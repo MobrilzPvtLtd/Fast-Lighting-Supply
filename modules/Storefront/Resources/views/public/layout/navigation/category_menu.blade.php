@@ -1,7 +1,7 @@
-<div class="category-nav {{ request()->routeIs('home') ? 'show' : 'category-dropdown-menu' }}">
-    <div class="category-nav-inner" >
+<div class="category-nav {{ request()->routeIs('home') ? 'show' : 'category-dropdown-menu' }}"  >
+    <div class="category-nav-inner" id="show-side-menu1" onclick="alertFunc()">
         {{ trans('storefront::layout.all_categories_header') }}
-        <i class="las la-bars" id="show-side-menu" onclick="alertFunc()" ></i>
+        <i class="las la-bars"></i>
     </div>
 
     @if ($categoryMenu->menus()->isNotEmpty())
@@ -36,11 +36,28 @@ const hide01 = document.getElementById("hide-side-menu")
 
 const alertFunc = () => {
     const hide01 = document.getElementById('hide-side-menu');
-    
+
     if (hide01.style.display === "none") {
         hide01.style.display = "block";
     } else {
         hide01.style.display = "none";
+    }
+};
+
+    </script>
+    <script>
+        const show02 = document.getElementById("show-side-menu1")
+const hide02 = document.getElementById("hide-side-menu")
+
+
+
+const alertFunc = () => {
+    const hide02 = document.getElementById('hide-side-menu');
+
+    if (hide02.style.display === "none") {
+        hide02.style.display = "block";
+    } else {
+        hide02.style.display = "none";
     }
 };
 

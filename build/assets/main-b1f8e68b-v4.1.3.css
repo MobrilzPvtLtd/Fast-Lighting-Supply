@@ -30052,3 +30052,10 @@ i#show-side-menu {
         font-size: 9px;
     }
 }
+
+
+
+
+.category-nav-inner{
+ cursor: pointer !important;
+}
