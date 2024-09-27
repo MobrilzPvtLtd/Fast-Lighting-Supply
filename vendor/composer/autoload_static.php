@@ -1222,8 +1222,8 @@ class ComposerStaticInit9d6357eaab1b2b5e1dbf86d6a8298070
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
-            1 => __DIR__ . '/..' . '/doctrine/common/src',
+            0 => __DIR__ . '/..' . '/doctrine/common/src',
+            1 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
         'Dflydev\\DotAccessData\\' => 
         array (
@@ -7758,6 +7758,7 @@ class ComposerStaticInit9d6357eaab1b2b5e1dbf86d6a8298070
         'Modules\\Product\\Events\\ShowingProductList' => __DIR__ . '/../..' . '/modules/Product/Events/ShowingProductList.php',
         'Modules\\Product\\Filters\\ProductFilter' => __DIR__ . '/../..' . '/modules/Product/Filters/ProductFilter.php',
         'Modules\\Product\\Filters\\QueryStringFilter' => __DIR__ . '/../..' . '/modules/Product/Filters/QueryStringFilter.php',
+        'Modules\\Product\\Http\\Controllers\\Admin\\BulkProductController' => __DIR__ . '/../..' . '/modules/Product/Http/Controllers/Admin/BulkProductController.php',
         'Modules\\Product\\Http\\Controllers\\Admin\\ProductController' => __DIR__ . '/../..' . '/modules/Product/Http/Controllers/Admin/ProductController.php',
         'Modules\\Product\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/modules/Product/Http/Controllers/ProductController.php',
         'Modules\\Product\\Http\\Controllers\\ProductPriceController' => __DIR__ . '/../..' . '/modules/Product/Http/Controllers/ProductPriceController.php',

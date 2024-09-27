@@ -75,5 +75,12 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+        'custom' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/custom.log'),
+            'level' => 'debug',
+            'bubble' => true,
+            'days' => 14, // Number of days to keep logs
+        ],
     ],
 ];

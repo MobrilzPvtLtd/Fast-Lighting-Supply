@@ -43,3 +43,11 @@ Route::get('products/index/table', [
     'uses' => 'ProductController@table',
     'middleware' => 'can:admin.products.index',
 ]);
+
+// Bulk Product Import //
+Route::get('/bulk-product-import', 'BulkProductController@index')->name('admin.bulk_product.index');
+Route::post('bulk-products-importer', [
+    'as' => 'bulk.products.import',
+    'uses' => 'BulkProductController@store',
+    'middleware' => 'can:admin.importer.create',
+]);

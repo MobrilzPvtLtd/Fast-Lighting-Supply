@@ -25,6 +25,7 @@ class SidebarExtender extends BaseSidebarExtender
                         'admin.attribute_sets.index',
                         'admin.variations.index',
                         'admin.options.index',
+                        'admin.bulk_product.index',
                     ])
                 );
 
@@ -43,6 +44,12 @@ class SidebarExtender extends BaseSidebarExtender
                     $item->authorize(
                         $this->auth->hasAccess('admin.products.index')
                     );
+                });
+
+                $item->item(trans('product::sidebar.bulk_product'), function (Item $item) {
+                    $item->weight(6);
+                    $item->route('admin.bulk_product.index');
+                    $item->isActiveWhen(route('admin.bulk_product.index', null, false));
                 });
             });
         });

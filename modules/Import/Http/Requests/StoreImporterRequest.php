@@ -23,7 +23,7 @@ class StoreImporterRequest extends Request
     public function rules()
     {
         return [
-            'import_type' => ['required', Rule::in(['product'])],
+            // 'import_type' => ['required', Rule::in(['product'])],
             'csv_file' => ['required', 'file', 'mimes:csv,txt'],
         ];
     }

@@ -10,26 +10,56 @@ use Maatwebsite\Excel\Concerns\OnEachRow;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\ToModel;
 
-class ProductImport implements OnEachRow, WithChunkReading, WithHeadingRow
+// class ProductImport implements OnEachRow, WithChunkReading, WithHeadingRow
+class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
+
 {
+    private $rowCount = 0;
+
     public function chunkSize(): int
     {
         return 200;
     }
 
-
-    public function onRow(Row $row)
+    public function model(array $row)
     {
-        $data = $this->normalize($row->toArray());
+        $this->rowCount++;
 
-        request()->merge($data);
+        $data = $this->normalize($row);
 
         try {
-            Product::create($data);
-        } catch (QueryException|ValidationException $e) {
-            session()->push('importer_errors', $row->getIndex());
+            \Log::channel('custom')->info("importing...". $this->rowCount);
+            return new Product($data);
+        } catch (QueryException $e) {
+            \Log::channel('custom')->info("getting error...".$e->getMessage());
+        //     session()->push('importer_errors', $row->getIndex());
         }
+    }
+
+    // public function onRow(Row $row)
+    // {
+        // $data = $this->normalize($row->toArray());
+
+        // request()->merge($data);
+
+        // $this->rowCount++;
+
+        // try {
+        // \Log::channel('custom')->info("importing...");
+        //     Product::create($data);
+        // \Log::channel('custom')->info("imported...");
+
+        // } catch (QueryException|ValidationException $e) {
+        // \Log::channel('custom')->info("getting error...".$e->getMessage());
+        //     session()->push('importer_errors', $row->getIndex());
+        // }
+    // }
+
+    public function getRowCount()
+    {
+        return $this->rowCount;
     }
 
 

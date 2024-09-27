@@ -6415,6 +6415,7 @@ return array(
     'Modules\\Product\\Events\\ShowingProductList' => $baseDir . '/modules/Product/Events/ShowingProductList.php',
     'Modules\\Product\\Filters\\ProductFilter' => $baseDir . '/modules/Product/Filters/ProductFilter.php',
     'Modules\\Product\\Filters\\QueryStringFilter' => $baseDir . '/modules/Product/Filters/QueryStringFilter.php',
+    'Modules\\Product\\Http\\Controllers\\Admin\\BulkProductController' => $baseDir . '/modules/Product/Http/Controllers/Admin/BulkProductController.php',
     'Modules\\Product\\Http\\Controllers\\Admin\\ProductController' => $baseDir . '/modules/Product/Http/Controllers/Admin/ProductController.php',
     'Modules\\Product\\Http\\Controllers\\ProductController' => $baseDir . '/modules/Product/Http/Controllers/ProductController.php',
     'Modules\\Product\\Http\\Controllers\\ProductPriceController' => $baseDir . '/modules/Product/Http/Controllers/ProductPriceController.php',
