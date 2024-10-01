@@ -5,7 +5,7 @@
     </div>
 
     @if ($categoryMenu->menus()->isNotEmpty())
-        <div class="category-dropdown-wrap" id="hide-side-menu">
+        <div class="category-dropdown-wrap" id="hide-side-menu" style="display: none">
             <div class="category-dropdown">
                 <ul class="list-inline mega-menu vertical-megamenu">
                     @foreach ($categoryMenu->menus() as $menu)
