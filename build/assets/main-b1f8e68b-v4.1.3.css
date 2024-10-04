@@ -30059,3 +30059,10 @@ i#show-side-menu {
 .category-nav-inner{
  cursor: pointer !important;
 }
+
+.header-column-right .header-cart:hover .icon-wrap svg path, .header-column-right .header-cart:hover .icon-wrap svg line, .header-column-right .header-cart:hover .icon-wrap svg circle {
+    stroke: #0cc0df !important;
+}
+.header-column-right .header-wishlist .icon-wrap svg path {
+    stroke-width: 2 !important;
+}
