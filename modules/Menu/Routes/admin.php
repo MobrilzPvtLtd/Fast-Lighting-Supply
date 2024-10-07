@@ -79,3 +79,40 @@ Route::put('menus/items/order', [
     'uses' => 'MenuItemOrderController@update',
     'middleware' => 'can:admin.menu_items.edit',
 ]);
+
+// Why Choose Us routes
+Route::get('why-choose-us', [
+    'as' => 'admin.why-choose-us.index',
+    'uses' => 'WhyChooseUsController@index',
+    // 'middleware' => 'can:admin.why-choose-us.index',
+]);
+
+Route::get('why-choose-us/create', [
+    'as' => 'admin.why-choose-us.create',
+    'uses' => 'WhyChooseUsController@create',
+    // 'middleware' => 'can:admin.why-choose-us.create',
+]);
+
+Route::post('why-choose-us', [
+    'as' => 'admin.why-choose-us.store',
+    'uses' => 'WhyChooseUsController@store',
+    // 'middleware' => 'can:admin.why-choose-us.create',
+]);
+
+Route::get('why-choose-us/{id}/edit', [
+    'as' => 'admin.why-choose-us.edit',
+    'uses' => 'WhyChooseUsController@edit',
+    // 'middleware' => 'can:admin.why-choose-us.edit',
+]);
+
+Route::put('why-choose-us/{id}', [
+    'as' => 'admin.why-choose-us.update',
+    'uses' => 'WhyChooseUsController@update',
+    // 'middleware' => 'can:admin.why-choose-us.edit',
+]);
+
+Route::delete('why-choose-us/{ids?}', [
+    'as' => 'admin.why-choose-us.destroy',
+    'uses' => 'WhyChooseUsController@destroy',
+    // 'middleware' => 'can:admin.why-choose-us.destroy',
+]);
