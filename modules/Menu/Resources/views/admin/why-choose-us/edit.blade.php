@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <div class="col-md-12">
                         <label for="is_active" class="control-label text-left">
                             {{ trans('Status') }}
@@ -76,7 +76,7 @@
                             <option value="0" {{ $choose->is_active == 0 ? 'selected' : '' }}>InActive</option>
                         </select>
                     </div>
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-primary">
                     {{ trans('admin::admin.buttons.save') }}
                 </button>

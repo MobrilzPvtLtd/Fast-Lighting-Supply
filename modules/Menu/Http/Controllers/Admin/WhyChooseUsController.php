@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Modules\Menu\Entities\WhyChooseUs;
 use Modules\Admin\Traits\HasCrudActions;
 use Illuminate\Support\Facades\Storage;
+use Modules\Menu\Http\Requests\SaveWhyChooseUsRequest;
 
 class WhyChooseUsController
 {
@@ -35,6 +36,12 @@ class WhyChooseUsController
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'icon' => 'required',
+            'description' => 'required',
+        ]);
+
         $choose = new WhyChooseUs();
         $choose->title = $request->title;
 
@@ -45,10 +52,10 @@ class WhyChooseUsController
         }
 
         $choose->description = $request->description;
-        $choose->is_active = $request->is_active;
+        $choose->is_active = 1;
         $choose->save();
 
-        $message = trans('admin::messages.resource_created', ['resource' => $this->getLabel()]);
+        $message = trans('Why Choose Us created', ['resource' => $this->getLabel()]);
 
         return redirect()->route('admin.why-choose-us.index')
             ->withSuccess($message);
@@ -87,10 +94,10 @@ class WhyChooseUsController
         }
 
         $choose->description = $request->description;
-        $choose->is_active = $request->is_active;
+        $choose->is_active = 1;
         $choose->save();
 
-        $message = trans('admin::messages.resource_updated', ['resource' => $this->getLabel()]);
+        $message = trans('Why Choose Us updated', ['resource' => $this->getLabel()]);
 
         return redirect()->route('admin.why-choose-us.index')
             ->withSuccess($message);
@@ -101,7 +108,7 @@ class WhyChooseUsController
         $choose = WhyChooseUs::find($id);
         $choose->delete();
 
-        $message = trans('admin::messages.resource_deleted', ['resource' => $this->getLabel()]);
+        $message = trans('Why Choose Us deleted', ['resource' => $this->getLabel()]);
 
         return redirect()->route('admin.why-choose-us.index')
             ->withSuccess($message);

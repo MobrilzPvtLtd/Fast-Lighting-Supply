@@ -3,15 +3,10 @@
         <div class="form-group">
             <label for="title" class="control-label text-left">
                 {{ trans('blog::attributes.posts.title') }}
-
                 <span class="text-red">*</span>
             </label>
 
-            <input type="text" name="title" id="title" class="form-control" x-model="form.title" autofocus>
-
-            <template x-if="errors.has('title')">
-                <span class="help-block text-red" x-text="errors.get('title')"></span>
-            </template>
+            <input type="text" name="title" id="title" class="form-control" required>
         </div>
 
         <div class="form-group">
@@ -20,7 +15,7 @@
                 <span class="text-red">*</span>
             </label>
 
-            <input type="file" name="icon" id="icon" class="form-control" x-model="form.icon" autofocus>
+            <input type="file" name="icon" id="icon" class="form-control" x-model="form.icon" required>
 
             <template x-if="errors.has('icon')">
                 <span class="help-block text-red" x-text="errors.get('icon')"></span>
@@ -28,13 +23,13 @@
         </div>
 
         <div class="form-group">
-            <label for="description" class="control-label text-left" @click="focusDescriptionField">
+            <label for="description" class="control-label text-left">
                 {{ trans('blog::attributes.posts.description') }}
 
                 <span class="text-red">*</span>
             </label>
 
-            <textarea name="description" id="description" class="form-control wysiwyg" rows="4">
+            <textarea name="description" id="description" class="form-control wysiwyg" rows="4" required>
             </textarea>
 
             <template x-if="errors.has('description')">
@@ -42,7 +37,7 @@
             </template>
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="is_active" class="control-label text-left">
                 {{ trans('Status') }}
             </label>
@@ -51,7 +46,7 @@
                 <option value="0">InActive</option>
             </select>
 
-        </div>
+        </div> --}}
         <button type="submit" class="btn btn-primary">
             {{ trans('admin::admin.buttons.save') }}
         </button>
