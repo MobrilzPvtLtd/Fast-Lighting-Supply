@@ -11,6 +11,8 @@ use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 // class ProductImport implements OnEachRow, WithChunkReading, WithHeadingRow
 class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
@@ -26,15 +28,17 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
     public function model(array $row)
     {
         $this->rowCount++;
+        // $data = $this->normalize($row);
 
-        $data = $this->normalize($row);
-
+        $data = $this->normalize($row, $this->rowCount);
         try {
-            \Log::channel('custom')->info("importing...". $this->rowCount);
+            \Log::channel('custom')->info("Importing... Line: {$this->rowCount}");
+
             return new Product($data);
+        } catch (\InvalidArgumentException $e) {
+            \Log::channel('custom')->info("Validation error on line {$this->rowCount}: ".$e->getMessage());
         } catch (QueryException $e) {
-            \Log::channel('custom')->info("getting error...".$e->getMessage());
-        //     session()->push('importer_errors', $row->getIndex());
+            \Log::channel('custom')->info("Database error on line {$this->rowCount}: ".$e->getMessage());
         }
     }
 
@@ -63,8 +67,38 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
     }
 
 
-    private function normalize(array $data)
+    private function normalize(array $data, int $lineNumber)
     {
+        $validator = Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'sku' => 'required|string|max:255|unique:products,sku',
+            'description' => 'nullable|string',
+            'short_description' => 'nullable|string|max:500',
+            'active' => 'boolean',
+            'brand' => ['nullable', Rule::exists('brands', 'id')],
+            'categories.*' => 'exists:categories,id',
+            'tax_class' => ['nullable', Rule::exists('tax_classes', 'id')],
+            'tags.*' => 'string|max:50',
+            'price' => 'required|numeric|min:0|max:99999999999999',
+            'special_price' => 'nullable|numeric|min:0|max:99999999999999',
+            'special_price_type' => ['nullable', Rule::in(['fixed', 'percent'])],
+            'special_price_start' => 'nullable|date|date_format:Y-m-d|before:special_price_end',
+            'special_price_end' => 'nullable|date|date_format:Y-m-d|after:special_price_start',
+            'manage_stock' => 'nullable|boolean',
+            'quantity' => 'required_if:manage_stock,1|nullable|numeric',
+            'in_stock' => 'nullable|boolean',
+            'new_from' => 'nullable|date',
+            'new_to' => 'nullable|date|after:new_from',
+            'up_sells.*' => 'exists:products,id',
+            'cross_sells.*' => 'exists:products,id',
+            'related_products.*' => 'exists:products,id',
+        ]);
+
+        if ($validator->fails()) {
+            $errorMessages = $validator->errors()->all();
+            throw new \InvalidArgumentException("Validation errors on line $lineNumber: " . implode(', ', $errorMessages));
+        }
+
         return array_filter([
             'name' => $data['name'],
             'sku' => $data['sku'],
