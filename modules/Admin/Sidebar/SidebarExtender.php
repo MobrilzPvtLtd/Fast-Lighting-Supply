@@ -19,6 +19,12 @@ class SidebarExtender extends BaseSidebarExtender
                 $item->route('admin.dashboard.index');
                 $item->isActiveWhen(route('admin.dashboard.index', null, false));
             });
+
+            $group->item(trans('Header Section'), function (Item $item) {
+                $item->icon('fa fa-header');
+                $item->route('admin.header-section.index');
+                $item->isActiveWhen(route('admin.header-section.index', null, false));
+            });
         });
 
         $menu->group(trans('admin::sidebar.system'), function (Group $group) {

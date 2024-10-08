@@ -6,15 +6,20 @@
                     {{-- <span>{{ setting('storefront_welcome_text') }}</span> --}}
                 </div>
 
+                @php
+                    $headers = Modules\Admin\Entities\HeaderSection::get();
+                @endphp
                 <div class="top-nav-right">
                     <ul class="list-inline top-nav-right-list">
-                        <li>
-                            <a>
-                                {{-- <i class="las la-envelope"></i> --}}
-                                Free Standard Shipping on All Orders
-                                {{-- {{ trans('storefront::layout.contact') }} --}}
-                            </a>
-                        </li>
+                        @foreach ($headers as $header)
+                            <li>
+                                <a>
+                                    {{-- <i class="las la-envelope"></i> --}}
+                                    {{ $header->title }}
+                                    {{-- {{ trans('storefront::layout.contact') }} --}}
+                                </a>
+                            </li>
+                        @endforeach
 
                         @if (is_multilingual())
                             <li>
@@ -45,37 +50,34 @@
                             </li>
                         @endif
 
-                        @auth
-
-                                <li>
-                                    <a>Free Fast Shipping on Orders $100+
-                                        {{-- <i class="las la-user"></i>
-                                        {{ trans('storefront::layout.account') }} --}}
-                                    </a>
-                                </li>
-                                {{-- <li class="">
-                                    <a href="{{ route('account.dashboard.index') }}">
-                                        <i class="las la-user"></i>
-                                        {{ trans('storefront::layout.account') }}
-                                    </a>
-                                </li> --}}
-                            @else
-                                <li>
-                                    <a>Free Fast Shipping on Orders $100+
-                                        {{-- <i class="las la-sign-in-alt"></i>
-                                        {{ trans('storefront::layout.login') }} --}}
-                                    </a>
-                                </li>
-                                {{-- <li>
-                                    <a href="{{ route('login') }}">
-                                        <i class="las la-sign-in-alt"></i>
-                                        {{ trans('storefront::layout.login') }}
-                                    </a>
-                                </li> --}}
-
-
-
-                        @endauth
+                        {{-- @auth
+                            <li>
+                                <a>
+                                    {{ $header1->title }}
+                                    <i class="las la-user"></i>
+                                    {{ trans('storefront::layout.account') }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{ route('account.dashboard.index') }}">
+                                    <i class="las la-user"></i>
+                                    {{ trans('storefront::layout.account') }}
+                                </a>
+                            </li>
+                        @else
+                            <li>
+                                <a>Free Fast Shipping on Orders $100+
+                                    <i class="las la-sign-in-alt"></i>
+                                    {{ trans('storefront::layout.login') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('login') }}">
+                                    <i class="las la-sign-in-alt"></i>
+                                    {{ trans('storefront::layout.login') }}
+                                </a>
+                            </li>
+                        @endauth --}}
                     </ul>
                 </div>
             </div>

@@ -61,9 +61,12 @@
                     $("#submitBtn").prop("disabled", false).text("Submit");
                 },
                 error: function(xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        $('#csvFileName').html(xhr.responseJSON.message).css('color', 'red');
+                    } else {
+                        $('#csvFileName').html('An error occurred. Please try again.').css('color', 'red');
+                    }
                     console.error('Error uploading file:', xhr.responseJSON.message);
-                    $('#csvFileName').html('An error occurred: ' + xhr.responseJSON.message).css('color', 'red');
-
                     $("#submitBtn").prop("disabled", false).text("Submit");
                 }
                 // complete: function() {
@@ -75,5 +78,6 @@
             });
         });
     });
+
 </script>
 @endpush

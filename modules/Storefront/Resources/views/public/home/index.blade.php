@@ -59,34 +59,22 @@
     @endif
 
     {{-- <blog-posts :data="{{ json_encode($blogPosts) }}"></blog-posts> --}}
+
+    @php
+        $chooses = Modules\Menu\Entities\WhyChooseUs::whereIn('id', [1, 2, 3])->get();
+    @endphp
     <section class="choose_fls">
         <div class="container">
             <h2>Why Choose Fast Lighting Supply?</h2>
-            <h6>Loreum dummit iosum loreum dummt iosum loren dummt iosum
-            </h6>
             <div class="d-flex choose_fls001">
-                <div class="choose-fls-sec001">
-                    <img src="build/assets/images/Quick-Checkout-96.png" alt="">
-                    <h4>Quick Checkout</h4>
-                    <p>At Fast Lighting Supply, we’ve streamlined the checkout process to ensure it’s fast and
-                        hassle-free. With our easy-to-navigate interface and secure payment options, you can complete
-                        your purchase in just a few clicks, saving you time and effort.</p>
-                </div>
-                <div class="choose-fls-sec002">
-                    <img src="build/assets/images/Fast-Delivery-96.png" alt="">
-                    <h4>Fast Delivery</h4>
-                    <p>We understand that time is critical when it comes to lighting projects. That’s why we prioritize
-                        speed in our deliveries, working with reliable carriers to get your order to you as quickly as
-                        possible, so you can stay on track.</p>
-                </div>
-                <div class="choose-fls-sec003">
-                    <img src="build/assets/images/Easy-Returns-96.png" alt="">
-                    <h4>Easy Returns</h4>
-                    <p>We believe in providing flexibility with every purchase. Our hassle-free returns policy allows you
-                        to return eligible items with ease, giving you peace of mind and full control over your orders.</p>
-                </div>
+                @foreach($chooses as $choose)
+                    <div class="choose-fls-sec{{ str_pad($loop->index + 1, 3, '0', STR_PAD_LEFT) }}">
+                        <img src="{{ asset('public/' . $choose->icon) }}" alt="">
+                        <h4>{{ $choose->title }}</h4>
+                        <p>{{ $choose->description }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
-
     </section>
 @endsection

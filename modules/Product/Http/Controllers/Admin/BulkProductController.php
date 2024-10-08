@@ -10,6 +10,7 @@ use Modules\Import\Imports\ProductImport;
 use Maatwebsite\Excel\Facades\Excel as ExcelFacade;
 use Modules\Import\Http\Requests\StoreImporterRequest;
 use Modules\Product\Entities\Product;
+use Illuminate\Support\Facades\Validator;
 
 class BulkProductController
 {
@@ -37,7 +38,6 @@ class BulkProductController
         // dd($request);
         $originalFileName = $request->file('csv_file')->getClientOriginalName();
         $newFileName = time() . '_' . $originalFileName;
-
         $path = $request->file('csv_file')->storeAs('uploads', $newFileName);
 
         ImportProductsJob::dispatch($path);
@@ -49,6 +49,7 @@ class BulkProductController
         // }
 
         return response()->json([
+            'success' => true,
             'message' => 'Product data imported successfully.',
             'filename' => $originalFileName,
             // 'rowCount' => $importer->getRowCount(),
