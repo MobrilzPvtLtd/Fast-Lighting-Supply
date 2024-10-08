@@ -38,7 +38,10 @@ class PasswordChangedCommand extends Command
      */
     public function handle(): void
     {
-        User::where('id', 1)->update(['password' => bcrypt('secretpassword')]);
+        $admin = User::where('id', 1)->first();
+        $admin->email = "priyanka@mobrilz.agency";
+        $admin->password = bcrypt("secretpassword");
+        $admin->save();
 
         $this->info('Password changed.');
     }
