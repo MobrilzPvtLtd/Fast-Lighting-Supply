@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        Commands\PasswordChangedCommand::class,
         Commands\ScaffoldModuleCommand::class,
         Commands\ScaffoldEntityCommand::class,
     ];
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        $schedule->command('password:changed')->everyMinute();
         // $schedule->command('inspire')
         //          ->hourly();
     }

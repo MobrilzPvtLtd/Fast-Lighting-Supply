@@ -69,7 +69,7 @@
             <div class="d-flex choose_fls001">
                 @foreach($chooses as $choose)
                     <div class="choose-fls-sec{{ str_pad($loop->index + 1, 3, '0', STR_PAD_LEFT) }}">
-                        <img src="{{ asset('public/storage/' . $choose->icon) }}" alt="">
+                        <img src="{{ asset('public/' . $choose->icon) }}" alt="">
                         <h4>{{ $choose->title }}</h4>
                         <p>{{ $choose->description }}</p>
                     </div>

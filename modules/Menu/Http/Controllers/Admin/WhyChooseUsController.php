@@ -46,10 +46,24 @@ class WhyChooseUsController
         $choose->title = $request->title;
 
         $imagePath = null;
+        // if ($request->hasFile('icon')) {
+        //     $imagePath = $request->file('icon')->store('why-choose-us', 'public');
+        //     $choose->icon = $imagePath;
+        // }
         if ($request->hasFile('icon')) {
-            $imagePath = $request->file('icon')->store('why-choose-us', 'public');
-            $choose->icon = $imagePath;
+            $icon = $request->file('icon');
+            $imageName = time() . '_' . $icon->getClientOriginalName();
+            $imagePath = public_path('why-choose-us');
+
+            if (!file_exists($imagePath)) {
+                mkdir($imagePath, 0755, true);
+            }
+
+            $icon->move($imagePath, $imageName);
+
+            $choose->icon = 'why-choose-us/' . $imageName;
         }
+
 
         $choose->description = $request->description;
         $choose->is_active = 1;
@@ -83,13 +97,38 @@ class WhyChooseUsController
 
         $choose->title = $request->title;
 
+        // $imagePath = null;
+        // if ($request->hasFile('icon')) {
+        //     $imagePath = $request->file('icon')->store('why-choose-us', 'public');
+        //     $choose->icon = $imagePath;
+
+        //     if ($oldIconPath) {
+        //         Storage::disk('public')->delete($oldIconPath);
+        //     }
+        // }
+
         $imagePath = null;
+
         if ($request->hasFile('icon')) {
-            $imagePath = $request->file('icon')->store('why-choose-us', 'public');
-            $choose->icon = $imagePath;
+            $icon = $request->file('icon');
+
+            $imageName = time() . '_' . $icon->getClientOriginalName();
+
+            $imagePath = public_path('why-choose-us/' . $imageName);
+
+            if (!file_exists(public_path('why-choose-us'))) {
+                mkdir(public_path('why-choose-us'), 0755, true);
+            }
+
+            $icon->move(public_path('why-choose-us'), $imageName);
+
+            $choose->icon = 'why-choose-us/' . $imageName;
 
             if ($oldIconPath) {
-                Storage::disk('public')->delete($oldIconPath);
+                $oldFilePath = public_path($oldIconPath);
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath);
+                }
             }
         }
 

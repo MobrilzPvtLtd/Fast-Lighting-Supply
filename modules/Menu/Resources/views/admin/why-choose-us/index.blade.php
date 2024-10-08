@@ -30,7 +30,7 @@
             <tr>
                 <th>{{ $choose->id }}</th>
                 <th>
-                    <img src="{{ asset('public/storage/' . $choose->icon) }}" alt="" width="80px">
+                    <img src="{{ asset('public/' . $choose->icon) }}" alt="" width="80px">
                 </th>
                 <th>{{ $choose->title }}</th>
                 <th>{{ \Illuminate\Support\Str::limit($choose->description, 100, '...') }}</th>
