@@ -22011,6 +22011,7 @@ textarea.form-control {
 }
 .top-nav-wrap {
     border-bottom: 1px solid #e1e1e1;
+    background-color: #000;
 }
 .top-nav {
     padding: 8px 15px;
@@ -22057,7 +22058,7 @@ textarea.form-control {
 .top-nav .top-nav-right-list > li > a {
     display: flex;
     align-items: center;
-    color: #191919;
+    color: #fff;
 }
 .top-nav .top-nav-right-list > li > a:hover {
     color: #0068e1;
@@ -24847,8 +24848,8 @@ textarea.form-control {
 .home-slider .slide .slider-image {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
+    /* -o-object-fit: cover; */
+    /* object-fit: cover; */
     opacity: 1 !important;
     animation-duration: 3s;
 }
@@ -25130,7 +25131,7 @@ textarea.form-control {
 }
 .home-section-inner {
     display: flex;
-    width: calc(100% - 293px);
+    width: calc(100% - 0px);
 }
 .ltr .home-section-inner {
     margin-left: 293px;

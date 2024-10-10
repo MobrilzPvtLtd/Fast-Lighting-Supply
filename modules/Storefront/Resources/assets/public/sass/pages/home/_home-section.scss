@@ -6,8 +6,8 @@
 
 .home-section-inner {
     display: flex;
-    width: calc(100% - 293px);
-    margin-left: 293px;
+    width: calc(100% - 0px);
+    // margin-left: 293px;
 
     .home-slider-wrap {
         width: 70%;
@@ -71,8 +71,8 @@
 
 @media screen and (max-width: 1400px) {
     .home-section-inner {
-        width: calc(100% - 276px);
-        margin-left: 276px;
+        width: calc(100% - 0px);
+        // margin-left: 276px;
     }
 
     .home-section-inner {
@@ -176,4 +176,113 @@
             margin-left: 0;
         }
     }
+}
+
+// Why choose us css //
+
+.choose-fls-sec001 {
+    background-color: #171827;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 35px;
+    border-radius: 25px 0px 0px 25px;
+}
+.choose-fls-sec001 h4 {
+    color: #fff;
+}
+.choose-fls-sec001 img {
+    width: 5vw;
+}
+.choose-fls-sec001 p {
+    color: #fff;
+}
+.choose-fls-sec002{
+    background-color: #0CC0DF;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 35px;
+}
+.choose-fls-sec002 h4 {
+    color: #fff;
+}
+.choose-fls-sec002 img {
+    width: 5vw;
+}
+.choose-fls-sec002 p {
+    color: #fff;
+}
+.choose-fls-sec003{
+    background-color: #171827;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 35px;
+    border-radius: 0px 25px 25px 0px;
+}
+.choose-fls-sec003 h4 {
+    color: #fff;
+}
+.choose-fls-sec003 img {
+    width: 5vw;
+}
+.choose-fls-sec003 p {
+    color: #fff;
+}
+
+section.choose_fls .container h2 {
+    text-align: center;
+    font-size: 36px;
+    line-height: 54px;
+    font-weight: 700;
+    padding: 25px;
+}
+
+section.choose_fls .container h6 {
+text-align: center;
+color: #939393;
+padding-bottom: 25px;
+line-height: 44px;
+font-size: 20px;
+font-weight: 500;
+}
+.contact001 ul li a {
+/* display: none !important; */
+color: #000;
+line-height: 35px;
+}
+.contact001 h4 {
+margin-bottom: 23px;
+}
+.contact001 ul li a:hover {
+/* display: none !important; */
+color: #007bff;
+}
+.contact001 ul li::marker {
+color: #fff;
+}
+.footer-links ul li::marker{
+color: #fff;
+}
+i#show-side-menu {
+cursor: pointer;
+}
+
+
+@media screen and (max-width:768px){
+.choose_fls001{
+    flex-direction: column;
+    gap: 15px;
+}
+.choose-fls-sec001, .choose-fls-sec002, .choose-fls-sec003 {
+    border-radius: 25px;
+    padding: 35px;
+}
+.choose-fls-sec001 img,.choose-fls-sec003 img, .choose-fls-sec002 img {
+    width: 20vw;
+}
 }
