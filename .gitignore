@@ -1,22 +1,22 @@
 #Meta
-.meta/
-.vscode/
-.idea/
-.github/
-.phpintel/
-*.sublime-project
-.DS_Store
+# .meta/
+# .vscode/
+# .idea/
+# .github/
+# .phpintel/
+# *.sublime-project
+# .DS_Store
 
 #Env
 .env
 
 #Dependencies
-node_modules/
+# node_modules/
 
 #Assets
 #public/build/
-public/pwa/
-modules/*/Resources/assets/public/fonts/*
+# public/pwa/
+# modules/*/Resources/assets/public/fonts/*
 
 #Logs
 modules/*/yarn-error.log
@@ -26,9 +26,9 @@ yarn-error.log
 
 #Others
 *.map
-public/hot
-public/sitemaps/*
-public/sitemap.xml
-.php-cs-fixer.cache
-.htaccess
+# public/hot
+# public/sitemaps/*
+# public/sitemap.xml
+# .php-cs-fixer.cache
+# .htaccess
 # storage
