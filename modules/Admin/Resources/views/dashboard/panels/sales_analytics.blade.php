@@ -1,10 +1,10 @@
 <div class="dashboard-panel sales-analytics">
     <div class="grid-header clearfix">
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-6">
                 <h5>{{ trans('admin::dashboard.sales_analytics_title') }}</h5>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                     <i class="fa fa-calendar"></i>&nbsp;
                     <span></span> <i class="fa fa-caret-down"></i>

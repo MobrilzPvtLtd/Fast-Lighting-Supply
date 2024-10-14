@@ -2,6 +2,7 @@
 
 namespace Modules\Import\Imports;
 
+use Carbon\Carbon;
 use Maatwebsite\Excel\Row;
 use Illuminate\Support\Collection;
 use Modules\Product\Entities\Product;
@@ -31,6 +32,7 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
         // $data = $this->normalize($row);
 
         $data = $this->normalize($row, $this->rowCount);
+        dd($data);
         try {
             \Log::channel('custom')->info("Importing... Line: {$this->rowCount}");
 
@@ -82,8 +84,8 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
             'price' => 'required|numeric|min:0|max:99999999999999',
             'special_price' => 'nullable|numeric|min:0|max:99999999999999',
             'special_price_type' => ['nullable', Rule::in(['fixed', 'percent'])],
-            'special_price_start' => 'nullable|date|date_format:Y-m-d|before:special_price_end',
-            'special_price_end' => 'nullable|date|date_format:Y-m-d|after:special_price_start',
+            'special_price_start' => 'nullable|date|before_or_equal:special_price_end',
+            'special_price_end' => 'nullable|date|after_or_equal:special_price_start',
             'manage_stock' => 'nullable|boolean',
             'quantity' => 'required_if:manage_stock,1|nullable|numeric',
             'in_stock' => 'nullable|boolean',
@@ -112,13 +114,13 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
             'price' => $data['price'],
             'special_price' => $data['special_price'],
             'special_price_type' => $data['special_price_type'],
-            'special_price_start' => $data['special_price_start'],
-            'special_price_end' => $data['special_price_end'],
+            'special_price_start' => Carbon::parse($data['special_price_start'])->format('Y-m-d'),
+            'special_price_end' => Carbon::parse($data['special_price_end'])->format('Y-m-d'),
             'manage_stock' => $data['manage_stock'] ?? 0, //bug fix
             'qty' => $data['quantity'],
             'in_stock' => $data['in_stock'] ?? 1, //bug fix
-            'new_from' => $data['new_from'],
-            'new_to' => $data['new_to'],
+            'new_from' => Carbon::parse($data['new_from'])->format('Y-m-d'),
+            'new_to' => Carbon::parse($data['new_to'])->format('Y-m-d'),
             'up_sells' => $this->explode($data['up_sells']),
             'cross_sells' => $this->explode($data['cross_sells']),
             'related_products' => $this->explode($data['related_products']),
