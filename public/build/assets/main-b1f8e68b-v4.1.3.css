@@ -25185,13 +25185,13 @@ textarea.form-control {
 }
 @media screen and (max-width: 1400px) {
     .home-section-inner {
-        width: calc(100% - 276px);
+        width: calc(100% - 0px);
     }
     .ltr .home-section-inner {
-        margin-left: 276px;
+        /* margin-left: 276px; */
     }
     .rtl .home-section-inner {
-        margin-right: 276px;
+        /* margin-right: 276px; */
     }
     .home-section-inner .home-banner-wrap,
     .home-section-inner .home-slider-wrap {
