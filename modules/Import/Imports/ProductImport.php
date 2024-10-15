@@ -32,7 +32,7 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
         // $data = $this->normalize($row);
 
         $data = $this->normalize($row, $this->rowCount);
-        dd($data);
+        // dd($data);
         try {
             \Log::channel('custom')->info("Importing... Line: {$this->rowCount}");
 
