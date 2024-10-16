@@ -28,6 +28,7 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
     private $rowCount = 0;
     private $products = [];
     private $files = [];
+    private $additionalImages = [];
 
     public function chunkSize(): int
     {
@@ -53,9 +54,24 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
                 'size' => $data['files']['base_image']['fileContent'],
             ]);
 
+            if (!empty($data['files']['additional_images'])) {
+                foreach ($data['files']['additional_images'] as $additionalImage) {
+                    $additional[] = File::create([
+                        'user_id' => auth()->id(),
+                        'disk' => config('filesystems.default'),
+                        'filename' => $additionalImage['filename'],
+                        'path' => $additionalImage['path'],
+                        'extension' => pathinfo($additionalImage['filename'], PATHINFO_EXTENSION),
+                        'mime' => $additionalImage['mime'],
+                        'size' => $additionalImage['fileContent'],
+                    ]);
+                }
+            }
+
             $product = Product::create($data);
             $this->products[] = $product;
             $this->files[] = $file;
+            $this->additionalImages[] = $additional;
 
             return $product;
 
@@ -76,6 +92,7 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
         return [
             'products' => $this->products,
             'files' => $this->files,
+            'additionalImages' => $this->additionalImages,
         ];
     }
 

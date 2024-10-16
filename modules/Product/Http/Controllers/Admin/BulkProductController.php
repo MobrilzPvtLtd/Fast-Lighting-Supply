@@ -51,16 +51,29 @@ class BulkProductController
         $importedData = $importer->getImportedData();
         $products = $importedData['products'];
         $files = $importedData['files'];
-
-        // dd($products,$files);
+        $additionalImages = $importedData['additionalImages'];
 
         foreach ($products as $index => $product) {
-            $entityFile = new EntityFile();
-            $entityFile->file_id = $files[$index]->id;
-            $entityFile->entity_type = Product::class;
-            $entityFile->entity_id = $product->id;
-            $entityFile->zone = "base_image";
-            $entityFile->save();
+
+            if (isset($files[$index])) {
+                EntityFile::create([
+                    'file_id' => $files[$index]->id,
+                    'entity_type' => Product::class,
+                    'entity_id' => $product->id,
+                    'zone' => "base_image",
+                ]);
+            }
+
+            if (isset($additionalImages[$index])) {
+                foreach ($additionalImages[$index] as $additionalImage) {
+                    EntityFile::create([
+                        'file_id' => $additionalImage->id,
+                        'entity_type' => Product::class,
+                        'entity_id' => $product->id,
+                        'zone' => "additional_image",
+                    ]);
+                }
+            }
         }
 
         return response()->json([
@@ -68,7 +81,7 @@ class BulkProductController
             'message' => 'Product data imported successfully.',
             'filename' => $originalFileName,
             'rowCount' => $importer->getRowCount(),
-            // 'products' => $products,
+            'products' => $products,
         ]);
     }
 }
