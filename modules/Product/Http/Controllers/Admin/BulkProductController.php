@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Facades\Excel as ExcelFacade;
 use Modules\Import\Http\Requests\StoreImporterRequest;
 use Modules\Product\Entities\Product;
 use Illuminate\Support\Facades\Validator;
+use Modules\Media\Entities\EntityFile;
 
 class BulkProductController
 {
@@ -35,24 +36,39 @@ class BulkProductController
      */
     public function store(StoreImporterRequest $request)
     {
-        // dd($request);
         $originalFileName = $request->file('csv_file')->getClientOriginalName();
         $newFileName = time() . '_' . $originalFileName;
         $path = $request->file('csv_file')->storeAs('uploads', $newFileName);
 
-        ImportProductsJob::dispatch($path);
+        // ImportProductsJob::dispatch($path);
 
-        // $importerClass = $request->import_type === 'product' ? ProductImport::class : null;
-        // if ($importerClass) {
-        //     $importer = new $importerClass;
-        //     ExcelFacade::import($importer, $request->file('csv_file'), null, Excel::CSV);
-        // }
+        $importerClass = $request->import_type === 'product' ? ProductImport::class : null;
+        if ($importerClass) {
+            $importer = new $importerClass;
+            ExcelFacade::import($importer, $request->file('csv_file'), null, Excel::CSV);
+        }
+
+        $importedData = $importer->getImportedData();
+        $products = $importedData['products'];
+        $files = $importedData['files'];
+
+        // dd($products,$files);
+
+        foreach ($products as $index => $product) {
+            $entityFile = new EntityFile();
+            $entityFile->file_id = $files[$index]->id;
+            $entityFile->entity_type = Product::class;
+            $entityFile->entity_id = $product->id;
+            $entityFile->zone = "base_image";
+            $entityFile->save();
+        }
 
         return response()->json([
             'success' => true,
             'message' => 'Product data imported successfully.',
             'filename' => $originalFileName,
-            // 'rowCount' => $importer->getRowCount(),
+            'rowCount' => $importer->getRowCount(),
+            // 'products' => $products,
         ]);
     }
 }

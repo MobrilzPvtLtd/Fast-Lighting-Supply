@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Row;
 use Illuminate\Support\Collection;
 use Modules\Product\Entities\Product;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -14,12 +15,19 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Modules\Media\Eloquent\HasMedia;
+use Modules\Media\Entities\File;
+use Illuminate\Support\Facades\Storage;
+use Modules\Media\Entities\EntityFile;
 
 // class ProductImport implements OnEachRow, WithChunkReading, WithHeadingRow
 class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
-
 {
+    use HasMedia;
+
     private $rowCount = 0;
+    private $products = [];
+    private $files = [];
 
     public function chunkSize(): int
     {
@@ -29,14 +37,28 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
     public function model(array $row)
     {
         $this->rowCount++;
-        // $data = $this->normalize($row);
 
         $data = $this->normalize($row, $this->rowCount);
         // dd($data);
         try {
             \Log::channel('custom')->info("Importing... Line: {$this->rowCount}");
 
-            return new Product($data);
+            $file = File::create([
+                'user_id' => auth()->id(),
+                'disk' => config('filesystems.default'),
+                'filename' => $data['files']['base_image']['filename'],
+                'path' => $data['files']['base_image']['path'],
+                'extension' => pathinfo($data['files']['base_image']['filename'], PATHINFO_EXTENSION),
+                'mime' => $data['files']['base_image']['mime'],
+                'size' => $data['files']['base_image']['fileContent'],
+            ]);
+
+            $product = Product::create($data);
+            $this->products[] = $product;
+            $this->files[] = $file;
+
+            return $product;
+
         } catch (\InvalidArgumentException $e) {
             \Log::channel('custom')->info("Validation error on line {$this->rowCount}: ".$e->getMessage());
         } catch (QueryException $e) {
@@ -44,28 +66,17 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
         }
     }
 
-    // public function onRow(Row $row)
-    // {
-        // $data = $this->normalize($row->toArray());
-
-        // request()->merge($data);
-
-        // $this->rowCount++;
-
-        // try {
-        // \Log::channel('custom')->info("importing...");
-        //     Product::create($data);
-        // \Log::channel('custom')->info("imported...");
-
-        // } catch (QueryException|ValidationException $e) {
-        // \Log::channel('custom')->info("getting error...".$e->getMessage());
-        //     session()->push('importer_errors', $row->getIndex());
-        // }
-    // }
-
     public function getRowCount()
     {
         return $this->rowCount;
+    }
+
+    public function getImportedData()
+    {
+        return [
+            'products' => $this->products,
+            'files' => $this->files,
+        ];
     }
 
 
@@ -114,13 +125,13 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
             'price' => $data['price'],
             'special_price' => $data['special_price'],
             'special_price_type' => $data['special_price_type'],
-            'special_price_start' => Carbon::parse($data['special_price_start'])->format('Y-m-d'),
-            'special_price_end' => Carbon::parse($data['special_price_end'])->format('Y-m-d'),
+            'special_price_start' => $this->formatDate($data['special_price_start']),
+            'special_price_end' => $this->formatDate($data['special_price_end']),
             'manage_stock' => $data['manage_stock'] ?? 0, //bug fix
             'qty' => $data['quantity'],
             'in_stock' => $data['in_stock'] ?? 1, //bug fix
-            'new_from' => Carbon::parse($data['new_from'])->format('Y-m-d'),
-            'new_to' => Carbon::parse($data['new_to'])->format('Y-m-d'),
+            'new_from' => $this->formatDate($data['new_from']),
+            'new_to' => $this->formatDate($data['new_to']),
             'up_sells' => $this->explode($data['up_sells']),
             'cross_sells' => $this->explode($data['cross_sells']),
             'related_products' => $this->explode($data['related_products']),
@@ -146,10 +157,50 @@ class ProductImport implements ToModel, WithChunkReading, WithHeadingRow
 
     private function normalizeFiles(array $data)
     {
+        $fileData = [];
+
+        if (!empty($data['base_image'])) {
+            $fileData['base_image'] = $this->processFile($data['base_image']);
+        }
+
+        if (!empty($data['additional_images'])) {
+            $additionalImages = $this->explode($data['additional_images']);
+            $fileData['additional_images'] = array_map([$this, 'processFile'], $additionalImages);
+        }
+
+        return $fileData;
+
+        // return [
+        //     'base_image' => $this->getFilePathOrId($data['base_image'] ?? null),
+        //     'additional_images' => array_map([$this, 'getFilePathOrId'], $this->explode($data['additional_images'] ?? '')),
+        // ];
+    }
+
+    private function processFile($fileUrl)
+    {
+        $fileContent = file_get_contents($fileUrl);
+
+        $fileName = uniqid() . '.' . pathinfo($fileUrl, PATHINFO_EXTENSION);
+        $relativePath = "media/{$fileName}";
+
+        Storage::put($relativePath, $fileContent);
+
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_buffer($finfo, $fileContent);
+        finfo_close($finfo);
+
         return [
-            'base_image' => $data['base_image'],
-            'additional_images' => $this->explode($data['additional_images']),
+            'filename' => $fileName,
+            'path' => $relativePath,
+            'mime' => $mimeType,
+            'fileContent' => strlen($fileContent)
         ];
+    }
+
+
+    private function formatDate($date)
+    {
+        return $date ? Carbon::parse($date)->format('Y-m-d') : null;
     }
 
 

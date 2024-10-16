@@ -8,7 +8,9 @@ use Illuminate\Contracts\View\View;
 use Modules\Product\Entities\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
 use Modules\Admin\Traits\HasCrudActions;
+use Modules\Media\Entities\EntityFile;
 use Modules\Product\Http\Requests\SaveProductRequest;
 use Modules\Product\Transformers\ProductEditResource;
 
