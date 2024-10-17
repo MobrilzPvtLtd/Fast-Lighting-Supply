@@ -70,7 +70,7 @@ class BulkProductController
                         'file_id' => $additionalImage->id,
                         'entity_type' => Product::class,
                         'entity_id' => $product->id,
-                        'zone' => "additional_image",
+                        'zone' => "additional_images",
                     ]);
                 }
             }
