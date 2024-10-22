@@ -7,7 +7,7 @@
                 </div>
 
                 @php
-                    $headers = Modules\Admin\Entities\HeaderSection::get();
+                    $headers = Modules\Admin\Entities\HeaderSection::where('is_active', 1)->get();
                 @endphp
                 <div class="top-nav-right">
                     <ul class="list-inline top-nav-right-list">
