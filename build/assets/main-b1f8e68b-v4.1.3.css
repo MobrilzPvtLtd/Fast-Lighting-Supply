@@ -29951,6 +29951,7 @@ textarea.form-control {
     justify-content: start;
     gap: 35px;
     border-radius: 25px 0px 0px 25px;
+    width: 100%;
 }
 .choose-fls-sec001 h4 {
     color: #fff;
