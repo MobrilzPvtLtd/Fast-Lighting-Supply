@@ -29969,6 +29969,7 @@ textarea.form-control {
     flex-direction: column;
     justify-content: start;
     gap: 35px;
+    width: 100%;
 }
 .choose-fls-sec002 h4 {
     color: #fff;
@@ -29987,6 +29988,7 @@ textarea.form-control {
     justify-content: start;
     gap: 35px;
     border-radius: 0px 25px 25px 0px;
+    width: 100%;
 }
 .choose-fls-sec003 h4 {
     color: #fff;
